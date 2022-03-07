@@ -1,2 +1,2 @@
 language = "cpp"
-run = "cmake .; make; ./reverse"
+run = "mkdir cmake_build; cd cmake_build; cmake ..; make; ./reverse"
