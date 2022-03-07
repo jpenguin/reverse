@@ -1,5 +1,7 @@
 /*******************************************************************************
- * program name: CIS-65 Programming Assignment 3
+ * program name:
+ *
+ *
  * created date: March 6 2022
  * created by: josh m dye
  * purpose: practice using the stack abstract data type. One common use of a
@@ -25,7 +27,7 @@
 #include <string>
 
 #include "teebuff.h"  // Echo print
-#include "StackType.h"
+#include "StackType.h" // Templated stack implementation from the book
 
 using std::string;
 using std::ofstream;
@@ -33,7 +35,28 @@ using std::ifstream;
 using std::cin;
 using std::cout;
 using std::cerr;
-void read_file(StackType &to_reverse) {
+
+/****************************************************************************
+* Function Name: clearScreen()
+* Parameters: None
+* Return Value: void
+* Purpose: Issue the correct clear command for windows or *nix
+****************************************************************************/
+void clearScreen() {
+//https://sourceforge.net/p/predef/wiki/Compilers/
+#ifdef _WIN32
+  system("cls");
+#else
+  system("clear");
+#endif
+}
+/****************************************************************************
+* Function Name: read_file()
+* Parameters: to_reverse stack passed by reference
+* Return Value: void
+* Purpose: Read input file character by character and put it in stack
+****************************************************************************/
+void read_file(StackType<char> &to_reverse) {
   char ch;  // Hold current character from file
 
   ifstream in_file;
@@ -54,23 +77,37 @@ void read_file(StackType &to_reverse) {
   }
   in_file.close(); //Need to close our input and output files
 }
-void read_string(StackType &to_reverse) {
+
+/****************************************************************************
+* Function Name: read_string()
+* Parameters: to_reverse stack passed by reference
+* Return Value: void
+* Purpose: Read string input character by character and put it in stack
+****************************************************************************/
+void read_string(StackType<char> &to_reverse) {
 
   string str;
 
   cout << "Enter a string:  ";
-  getline(cin, str);
+  getline(cin, str); // Seems to be skipping over this
 
-  for (char i : str) { //repeat for each character in str
+  for (char i : str) { // repeat for each character in str
     if (!to_reverse.IsFull()) // this stack is array based, don't add anything if it's full
       to_reverse.Push(i); //put character in stack
     else
       break; //if full, break out of loop
   }
 }
-void print_reverse(StackType &to_reverse) {
+
+/****************************************************************************
+* Function Name: print_reverse()
+* Parameters: to_reverse stack passed by reference
+* Return Value: void
+* Purpose: print stack from end to beginning
+****************************************************************************/
+void print_stack(StackType<char> &to_reverse) {
   ofstream out_file; //Set an output file to write to
-  teestream teeout(out_file, cout);  // output to screen and
+  teestream basic_teestream(out_file, cout);  // output to screen and
   //  file simultaneously
   try {
     if (!out_file.is_open())
@@ -82,16 +119,31 @@ void print_reverse(StackType &to_reverse) {
   }
 
   while (!to_reverse.IsEmpty()) { //Repeat until stack is empty
-    teeout << to_reverse.Top();  // output last character in stack
+    basic_teestream << to_reverse.Top();  // output last character in stack
     to_reverse.Pop(); // delete last character in stack
   }
   out_file.close(); //Need to close our input and output files
 }
 int main() {
-  StackType to_reverse;
-  read_string(to_reverse);
-  //read_file(to_reverse);
-  print_reverse(to_reverse);
+  //StackType to_reverse;
+  StackType<char> to_reverse(1000);
+  char ans;  // Holds menu answer
+  do {
+  cout << "\t(1) Enter string to reverse\n\t(2) Reverse text file\n";
+  cin >> ans;
+    switch (ans) {
+      case '1':
+        read_string(to_reverse);
+      break;
+      case '2':
+        read_file(to_reverse);
+      break;
+      default:
+        ans = 'r'; // If answered anything else, rerun prompt
+        clearScreen();
+    }
+  } while (ans=='r');
+  print_stack(to_reverse); // Paste output in www.textreverse.com to see what it was
 
   return 0;
 }
