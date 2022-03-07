@@ -23,6 +23,7 @@
  *******************************************************************************/
 
 #include <iostream>
+#include <limits>
 #include <fstream>
 #include <string>
 
@@ -131,6 +132,8 @@ int main() {
   do {
   cout << "\t(1) Enter string to reverse\n\t(2) Reverse text file\n";
   cin >> ans;
+    cin.clear(); //Clear out the cin buffer
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //Ignore any extra characters
     switch (ans) {
       case '1':
         read_string(to_reverse);
