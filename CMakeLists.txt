@@ -7,5 +7,5 @@ include_directories(.)
 
 add_executable(reverse
         main.cpp
-        StackType.h
-        teebuff.h)
+        reverse.cpp
+        reverse_more.cpp)
