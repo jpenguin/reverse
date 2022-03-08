@@ -7,30 +7,31 @@
 
 #include <stack>
 
-class reverse {
+class ReverseMore {
  public:
   /****************************************************************************
 * Function Name: read_file()
-* Parameters: to_reverse stack passed by reference
+* Parameters: None
 * Return Value: void
 * Purpose: Read input file character by character and put it in stack
 ****************************************************************************/
-  void read_file(std::stack<char> &to_reverse);
+  void read_file();
   /****************************************************************************
 * Function Name: read_string()
-* Parameters: to_reverse stack passed by reference
+* Parameters: None
 * Return Value: void
 * Purpose: Read string input character by character and put it in stack
 ****************************************************************************/
-  void read_string(std::stack<char> &to_reverse);
+  void read_string();
   /****************************************************************************
 * Function Name: print_stack()
-* Parameters: to_reverse stack passed by reference
+* Parameters: None
 * Return Value: void
 * Purpose: print stack from end to beginning
 ****************************************************************************/
-  static void print_stack(std::stack<char> &to_reverse);
-
+  void print_stack();
+ private:
+  std::stack<char> to_reverse; // Uses std::stack implementation
 };
 
 #endif //REVERSE__REVERSE_MORE_H_

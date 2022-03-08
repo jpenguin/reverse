@@ -16,7 +16,7 @@ using std::cin;
 using std::cout;
 using std::cerr;
 
-void reverse::read_file(StackType<char> &to_reverse) {
+void Reverse::read_file() {
   char ch;  // Hold current character from file
 
   ifstream in_file;
@@ -24,7 +24,7 @@ void reverse::read_file(StackType<char> &to_reverse) {
     if (!in_file.is_open())
       in_file.open("LICENSE.txt");
   }
-  catch (string ex) {
+  catch (string &ex) {
     cerr << "An error occurred. " << ex;
     return;
   }
@@ -38,7 +38,7 @@ void reverse::read_file(StackType<char> &to_reverse) {
   in_file.close(); //Need to close our input and output files
 }
 
-void reverse::read_string(StackType<char> &to_reverse) {
+void Reverse::read_string() {
   string str;
 
   cout << "Enter a string:  ";
@@ -52,7 +52,7 @@ void reverse::read_string(StackType<char> &to_reverse) {
   }
 }
 
-void reverse::print_stack(StackType<char> &to_reverse) {
+void Reverse::print_stack() {
   ofstream out_file; //Set an output file to write to
   teestream basic_teestream(out_file, cout);  // output to screen and
   //  file simultaneously
@@ -60,7 +60,7 @@ void reverse::print_stack(StackType<char> &to_reverse) {
     if (!out_file.is_open())
       out_file.open("Reversed.txt");
   }
-  catch (string ex) {
+  catch (string &ex) {
     cerr << "An error occurred. " << ex;
     return;
   }
