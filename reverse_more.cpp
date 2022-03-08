@@ -6,7 +6,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <stack>
 
 #include "teebuff.h"  // Echo print
 
@@ -16,12 +15,7 @@ using std::ifstream;
 using std::cin;
 using std::cout;
 using std::cerr;
-/****************************************************************************
-* Function Name: read_file()
-* Parameters: to_reverse stack passed by reference
-* Return Value: void
-* Purpose: Read input file character by character and put it in stack
-****************************************************************************/
+
 void reverse::read_file(std::stack<char> &to_reverse) {
   char ch;  // Hold current character from file
 
@@ -43,12 +37,6 @@ void reverse::read_file(std::stack<char> &to_reverse) {
   in_file.close(); //Need to close our input and output files
 }
 
-/****************************************************************************
-* Function Name: read_string()
-* Parameters: to_reverse stack passed by reference
-* Return Value: void
-* Purpose: Read string input character by character and put it in stack
-****************************************************************************/
 void reverse::read_string(std::stack<char> &to_reverse) {
 
   string str;
@@ -61,12 +49,6 @@ void reverse::read_string(std::stack<char> &to_reverse) {
   }
 }
 
-/****************************************************************************
-* Function Name: print_reverse()
-* Parameters: to_reverse stack passed by reference
-* Return Value: void
-* Purpose: print stack from end to beginning
-****************************************************************************/
 void reverse::print_stack(std::stack<char> &to_reverse) {
   ofstream out_file; //Set an output file to write to
   teestream basic_teestream(out_file, cout);  // output to screen and

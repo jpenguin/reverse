@@ -15,12 +15,7 @@ using std::ifstream;
 using std::cin;
 using std::cout;
 using std::cerr;
-/****************************************************************************
-* Function Name: read_file()
-* Parameters: to_reverse stack passed by reference
-* Return Value: void
-* Purpose: Read input file character by character and put it in stack
-****************************************************************************/
+
 void reverse::read_file(StackType<char> &to_reverse) {
   char ch;  // Hold current character from file
 
@@ -35,7 +30,7 @@ void reverse::read_file(StackType<char> &to_reverse) {
   }
 
   while (in_file.get(ch)) { // Read in_file, character by character
-    if(!to_reverse.IsFull()) // this stack is array based, don't add anything if it's full
+    if (!to_reverse.IsFull()) // this stack is array based, don't add anything if it's full
       to_reverse.Push(ch); //put character in stack
     else
       break; //if full, break out of loop
@@ -43,12 +38,6 @@ void reverse::read_file(StackType<char> &to_reverse) {
   in_file.close(); //Need to close our input and output files
 }
 
-/****************************************************************************
-* Function Name: read_string()
-* Parameters: to_reverse stack passed by reference
-* Return Value: void
-* Purpose: Read string input character by character and put it in stack
-****************************************************************************/
 void reverse::read_string(StackType<char> &to_reverse) {
   string str;
 
@@ -56,19 +45,13 @@ void reverse::read_string(StackType<char> &to_reverse) {
   getline(cin, str);
 
   for (char ch : str) { // repeat for each character in str
-    if(!to_reverse.IsFull()) // this stack is array based, don't add anything if it's full
+    if (!to_reverse.IsFull()) // this stack is array based, don't add anything if it's full
       to_reverse.Push(ch); //put character in stack
     else
       break; //if full, break out of loop
   }
 }
 
-/****************************************************************************
-* Function Name: print_stack()
-* Parameters: to_reverse stack passed by reference
-* Return Value: void
-* Purpose: print stack from end to beginning
-****************************************************************************/
 void reverse::print_stack(StackType<char> &to_reverse) {
   ofstream out_file; //Set an output file to write to
   teestream basic_teestream(out_file, cout);  // output to screen and

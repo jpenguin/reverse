@@ -19,14 +19,14 @@
  * express or implied. see the license for the specific language governing
  * permissions and limitations under the license.
  *******************************************************************************/
-//#define C_STANDARD_STACK // Uncomment to use std::stack
+//#define CPP_STANDARD_STACK // Uncomment to use std::stack
 #include <iostream>
 #include <limits>
 
-#ifdef C_STANDARD_STACK
-#include "reverse_more.h"
+#ifdef CPP_STANDARD_STACK
+#include "reverse_more.h" // Uses std::stack implementation
 #else
-#include "reverse.h"
+#include "reverse.h" // Uses stack implementation from the book
 #endif
 
 using std::cin;
@@ -48,12 +48,12 @@ void clearScreen() {
 }
 
 int main() {
-#ifdef C_STANDARD_STACK
-  std::stack<char> to_reverse;
+#ifdef CPP_STANDARD_STACK
+  std::stack<char> to_reverse; // Uses std::stack implementation
 #else
-  StackType<char> to_reverse(1000);
+  StackType<char> to_reverse(1000); // Uses stack implementation from the book
 #endif
-  reverse Stack;
+  reverse Stack;  //Create instance or the reverse class
   char ans;  // Holds menu answer
   do {
     cout << "\t(1) Enter string to reverse\n\t(2) Reverse text file\n";
