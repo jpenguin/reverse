@@ -19,11 +19,12 @@
  * express or implied. see the license for the specific language governing
  * permissions and limitations under the license.
  *******************************************************************************/
-///#define CPP_STANDARD_STACK // Uncomment to use std::stack
+//#define CPP_STANDARD_STACK // Uncomment to use std::stack,
+                             // can also turn on with "cmake -DSTACK=ON"
 #include <iostream>
 #include <limits>
 
-//#ifdef CPP_STANDARD_STACK
+#ifdef CPP_STANDARD_STACK
 #include "reverse_more.h" // Uses std::stack implementation
 #else
 #include "reverse.h" // Uses stack implementation from the book
@@ -56,7 +57,7 @@ int main() {
 
   char ans;  // Holds menu answer
   do {
-    cout << "\t(1) Enter string to ReverseMore\n\t(2) Reverse text file\n";
+    cout << "\t(1) Enter string to reverse\n\t(2) Reverse text file\n";
     cin >> ans;
     cin.clear(); //Clear out the cin buffer
     cin.ignore(std::numeric_limits<std::streamsize>::max(),
