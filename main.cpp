@@ -20,9 +20,10 @@
  * permissions and limitations under the license.
  *******************************************************************************/
 //#define CPP_STANDARD_STACK // Uncomment to use std::stack,
-                             // can also turn on with "cmake -DSTACK=ON"
+// can also turn on with "cmake -DSTACK=ON"
 #include <iostream>
 #include <limits>
+#include <string>
 
 #ifdef CPP_STANDARD_STACK
 #include "reverse_more.h" // Uses std::stack implementation
@@ -32,6 +33,7 @@
 
 using std::cin;
 using std::cout;
+using std::string;
 
 /****************************************************************************
 * Function Name: clearScreen()
@@ -50,11 +52,12 @@ void clearScreen() {
 
 int main() {
 #ifdef CPP_STANDARD_STACK
-  ReverseMore Stack;  //Create instance using std::stack implementation
+  ReverseMore reverse;  //Create instance using std::stack implementation
 #else
-  Reverse Stack;  //Create instance using stack implementation from the book
+  Reverse reverse;  //Create instance using stack implementation from the book
 #endif
 
+  string filename; // Name of chosen file
   char ans;  // Holds menu answer
   do {
     cout << "\t(1) Enter string to reverse\n\t(2) Reverse text file\n";
@@ -63,15 +66,16 @@ int main() {
     cin.ignore(std::numeric_limits<std::streamsize>::max(),
                '\n'); //Ignore any extra characters
     switch (ans) {
-      case '1':Stack.read_string();
+      case '1':reverse.ReadString();
         break;
-      case '2':Stack.read_file();
+      case '2':filename = "LICENSE.txt"; // File to be reversed
+        reverse.ReadFile(filename);
         break;
       default:ans = 'r'; // If answered anything else, rerun prompt
         clearScreen();
     }
   } while (ans == 'r');
-  Stack.print_stack(); // print stack from end to beginning
+  reverse.PrintStack(); // print stack from end to beginning
   // Paste output in www.textreverse.com to see what it was
 
   return 0;

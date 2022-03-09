@@ -5,33 +5,34 @@
 #ifndef REVERSE__REVERSE_MORE_H_
 #define REVERSE__REVERSE_MORE_H_
 
+#include <string>
 #include <stack>
 
 class ReverseMore {
  public:
   /****************************************************************************
-* Function Name: read_file()
-* Parameters: None
+* Function Name: ReadFile()
+* Parameters: filename
 * Return Value: void
 * Purpose: Read input file character by character and put it in stack
 ****************************************************************************/
-  void read_file();
+  void ReadFile(std::string &);
   /****************************************************************************
-* Function Name: read_string()
+* Function Name: ReadString()
 * Parameters: None
 * Return Value: void
 * Purpose: Read string input character by character and put it in stack
 ****************************************************************************/
-  void read_string();
+  void ReadString();
   /****************************************************************************
-* Function Name: print_stack()
+* Function Name: PrintStack()
 * Parameters: None
 * Return Value: void
 * Purpose: print stack from end to beginning
 ****************************************************************************/
-  void print_stack();
+  void PrintStack();
  private:
-  std::stack<char> to_reverse; // Uses std::stack implementation
+  std::stack<char> to_reverse_; // Uses std::stack implementation
 };
 
 #endif //REVERSE__REVERSE_MORE_H_

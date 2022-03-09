@@ -18,4 +18,4 @@ add_executable(reverse
 option(STACK "Uses std::stack implementation" OFF)
 if (STACK)
     add_definitions(-DCPP_STANDARD_STACK)
-endif()
+endif ()

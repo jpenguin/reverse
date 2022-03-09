@@ -5,33 +5,34 @@
 #ifndef REVERSE__REVERSE_H_
 #define REVERSE__REVERSE_H_
 
-#include "StackType.h" // Templated stack implementation from the book
+#include <string>
+#include "StackType.h" // Stack implementation from the book
 
 class Reverse {
  public:
   /****************************************************************************
-* Function Name: read_file()
-* Parameters: to_reverse stack passed by reference
+* Function Name: ReadFile()
+* Parameters: filename
 * Return Value: void
 * Purpose: Read input file character by character and put it in stack
 ****************************************************************************/
-  void read_file();
+  void ReadFile(std::string &);
   /****************************************************************************
-* Function Name: read_string()
-* Parameters: to_reverse stack passed by reference
+* Function Name: ReadString()
+* Parameters: None
 * Return Value: void
 * Purpose: Read string input character by character and put it in stack
 ****************************************************************************/
-  void read_string();
+  void ReadString();
   /****************************************************************************
-* Function Name: print_stack()
-* Parameters: to_reverse stack passed by reference
+* Function Name: PrintStack()
+* Parameters: None
 * Return Value: void
 * Purpose: print stack from end to beginning
 ****************************************************************************/
-  void print_stack();
+  void PrintStack();
  private:
-  StackType to_reverse;
+  StackType to_reverse_;
 };
 
 #endif //REVERSE__REVERSE_H_
